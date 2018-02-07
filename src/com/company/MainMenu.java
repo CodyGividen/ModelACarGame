@@ -9,7 +9,7 @@ public class MainMenu {
 
     protected void createCar() {
         System.out.println("What kind of car would you like to create?");
-        System.out.println("1. Custom Car \n2. Ready to go \n3. Exit ");
+        System.out.println("1. Custom Car \n2. Your moms car \n3. DeLorean \n4. Exit ");
 
         try {
             switch (input.nextInt()) {
@@ -24,16 +24,22 @@ public class MainMenu {
                     menu(momsCar);
                     break;
                 case 3:
+                    DeLorean deLorean = new DeLorean(1981, "DMC", "DeLorean", 0,100, 88);
+                    deLorean.getDeLoreanInfo();
+                    menu(deLorean);
+
+                    break;
+                case 4:
                     //exit
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Please enter a number between 1 and 3.");
+                    System.out.println("Please enter a number between 1 and 4.");
                     createCar();
             }
         }catch (InputMismatchException ime) {
             input.nextLine();
-            System.out.println("Please enter a number between 1 and 3.");
+            System.out.println("Please enter a number between 1 and 4.");
             createCar();
 
 

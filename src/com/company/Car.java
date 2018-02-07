@@ -77,7 +77,7 @@ public class Car extends Vehicle {
             mainMenu.createCar();
 
         } else {
-            for (int seconds = 0; seconds <= 5; seconds++) {
+            for (int seconds = 0; seconds <= 3; seconds++) {
                 car.setSpeed(car.getSpeed() + 1);
                 car.setGas(car.getGas() - 1);
 
@@ -91,7 +91,7 @@ public class Car extends Vehicle {
                 System.out.println("You ran out of gas. Your car is now broken, good job. Now you get to go spend money to get that fixed");
                 mainMenu.createCar();
             } else {
-                for (int seconds = 0; seconds <= 5; seconds++) {
+                for (int seconds = 0; seconds <= 3; seconds++) {
                     car.setSpeed(car.getSpeed() - 1);
                     car.setGas(car.getGas() - 1);
 

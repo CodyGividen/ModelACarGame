@@ -7,7 +7,7 @@ public class MainMenu {
 
     private Scanner input = new Scanner(System.in);
 
-    protected void  createCar() {
+    protected void createCar() {
         System.out.println("What kind of car would you like to create?");
         System.out.println("1. Custom Car \n2. Ready to go \n3. Exit ");
 

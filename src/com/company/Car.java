@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import static com.company.Main.mainMenu;
 
-public class Car extends Vehicle{
+public class Car extends Vehicle {
     private Scanner input = new Scanner(System.in);
     private int year;
     private String make;
@@ -20,7 +20,8 @@ public class Car extends Vehicle{
         setSpeed(0);
         setGas(100);
     }
-    public Car(int year, String make, String model, int speed, int gas){
+
+    public Car(int year, String make, String model, int speed, int gas) {
         super(year, make, model);
         this.speed = speed;
         this.gas = gas;
@@ -42,6 +43,7 @@ public class Car extends Vehicle{
         System.out.println("What is the make of your car you would like to create?");
         super.setMake(input.nextLine());
     }
+
     public void setModel() {
         System.out.println("What is the model of your car you would like to create?");
         super.setModel(input.nextLine());
@@ -70,32 +72,41 @@ public class Car extends Vehicle{
     }
 
     public void driveCar(Car car) {
-        for (int seconds = 0; seconds <= 5; seconds++) {
-            car.setSpeed(car.getSpeed() + 1);
-            car.setGas(car.getGas() - 1);
+        if (getGas() == 0) {
+            System.out.println("You ran out of gas. Your car is now broken, good job. Now you get to go spend money to get that fixed");
+            mainMenu.createCar();
 
-            System.out.println("The " + car.getMake() + " " + car.getModel() + " is going " + car.getSpeed() + "MPH and has " + car.getGas() + "% of its gas left.");
+        } else {
+            for (int seconds = 0; seconds <= 5; seconds++) {
+                car.setSpeed(car.getSpeed() + 1);
+                car.setGas(car.getGas() - 1);
+
+                System.out.println("The " + car.getMake() + " " + car.getModel() + " is going " + car.getSpeed() + "MPH and has " + car.getGas() + "% of its gas left.");
+            }
+        }
+        mainMenu.menu(car);
+    }
+        public void slowCar (Car car) {
+            if (getGas() == 0) {
+                System.out.println("You ran out of gas. Your car is now broken, good job. Now you get to go spend money to get that fixed");
+                mainMenu.createCar();
+            } else {
+                for (int seconds = 0; seconds <= 5; seconds++) {
+                    car.setSpeed(car.getSpeed() - 1);
+                    car.setGas(car.getGas() - 1);
+
+                    System.out.println("The " + car.getMake() + " " + car.getModel() + " is going " + car.getSpeed() + "MPH and has " + car.getGas() + "% of its gas left.");
+                }
+
+                mainMenu.menu(car);
+            }
         }
 
-        mainMenu.menu(car);
-    }
+        public void addGas (Car car){
+            car.setGas(100);
 
-    public void slowCar(Car car) {
-        for (int seconds = 0; seconds <= 5; seconds++) {
-            car.setSpeed(car.getSpeed() - 1);
-            car.setGas(car.getGas() - 1);
-
-            System.out.println("The " + car.getMake() + " " + car.getModel() + " is going " + car.getSpeed() + "MPH and has " + car.getGas() + "% of its gas left.");
+            System.out.println("You now have full tank of gas.");
+            mainMenu.menu(car);
         }
-
-        mainMenu.menu(car);
     }
-
-    public void addGas(Car car) {
-        car.setGas(100);
-
-        System.out.println("You now have full tank of gas.");
-        mainMenu.menu(car);
-    }
-}
 
